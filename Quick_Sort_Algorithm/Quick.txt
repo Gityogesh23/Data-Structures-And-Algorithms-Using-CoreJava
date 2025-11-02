@@ -10,3 +10,17 @@ Choose a Pivot: Select an element from the array as the pivot. The choice of piv
 Partition the Array: Re arrange the array around the pivot. After partitioning, all elements smaller than the pivot will be on its left, and all elements greater than the pivot will be on its right. The pivot is then in its correct position, and we obtain the index of the pivot.
 Recursively Call: Recursively apply the same process to the two partitioned sub-arrays (left and right of the pivot).
 Base Case: The recursion stops when there is only one element left in the sub-array, as a single element is already sorted.
+
+Choice of Pivot
+There are many different choices for picking pivots.
+
+Always pick the first (or last) element as a pivot. The below implementation picks the last element as pivot. The problem with this approach is it ends up in the worst case when array is already sorted.
+Pick a random element as a pivot. This is a preferred approach because it does not have a pattern for which the worst case happens.
+Pick the median element is pivot. This is an ideal approach in terms of time complexity as we can find median in linear time and the partition function will always divide the input array into two halves. But it takes more time on average as median finding has high constants.
+
+Partition Algorithm
+The key process in quickSort is a partition(). There are three common algorithms to partition. All these algorithms have O(n) time complexity.
+
+Naive Partition: Here we create copy of the array. First put all smaller elements and then all greater. Finally we copy the temporary array back to original array. This requires O(n) extra space.
+Lomuto Partition: We have used this partition in this article. This is a simple algorithm, we keep track of index of smaller elements and keep swapping. We have used it here in this article because of its simplicity.
+Hoare's Partition: This is the fastest of all. Here we traverse array from both sides and keep swapping greater element on left with smaller on right while the array is not partitioned. Please refer Hoare’s vs Lomuto for details.
